@@ -41,6 +41,12 @@ function handleItem(itemSrc) {
     var itemImg = $('<img>',{
         src: itemSrc['images'][0]['src']
     });
+    var itemName = itemSrc.title;
+    var itemPrice = itemSrc['variants'][0]['price'];
+    var itemComparePrice = itemSrc['variants'][0]['compare_at_price'];
     item.append(itemImg);
+    item.append(itemName);
+    item.append(itemPrice);
+    item.append(itemComparePrice);
     return item;
 }
