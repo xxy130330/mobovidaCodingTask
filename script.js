@@ -4,7 +4,7 @@ $(document).ready(initializeApp);
 
 function initializeApp() {
     handleAPI();
-    $('.productName').click(clickFunction);
+    // $('.productName').click(clickFunction);
     filterSelection("all");
 }
 
@@ -105,8 +105,10 @@ function handleItem(itemSrc) {
     return item;
 }
 
-function clickFunction() {
-    console.log('clicked');
+function sortProduct() {
+    var selectValue = $('#sortMenu').val();
+    // $('#sortMenu').options[0].selected = true;
+    console.log('clicked' + selectValue);
 }
 
 // **************************** Project section filter menu *****************
