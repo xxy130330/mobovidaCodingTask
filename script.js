@@ -47,6 +47,9 @@ function handleItem(itemSrc) {
         color: itemSrc['options'][0]['values'][0],
         backUpColor: itemSrc['tags'][1]
     });
+    if(itemSrc['variants'][0]['available'] === true){
+        item.addClass('available');
+    }
     // console.log();
     // console.log(itemSrc['variants'][0]['available']);
     var itemImg = $('<img>',{
