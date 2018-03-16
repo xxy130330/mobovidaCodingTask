@@ -1,3 +1,10 @@
+.header,
+.footer{
+    height: 15vh;
+    width: 100%;
+    border:1px dashed blue;
+}
+
 .bodyContainer{
     border:2px solid black;
 }
@@ -5,4 +12,6 @@
 img{
     width: 20vmin;
     height:20vh;
+    margin-left: 2%;
 }
+

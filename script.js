@@ -1,6 +1,6 @@
 $(document).ready(initializeApp);
 
-var productObject = {};
+// var productObject = {};
 
 function initializeApp() {
     handleAPI();
@@ -14,7 +14,7 @@ function handleAPI() {
             var productsList = data['products'];  //productList is an array
             // productObject.title = productsList[0]['title'];
             console.log(productsList);
-            handleAllItem(productsList); //?????
+            handleAllItem(productsList);
 
         },
         error: function () {
