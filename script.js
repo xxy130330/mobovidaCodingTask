@@ -2,7 +2,9 @@ $(document).ready(initializeApp);
 
 var productObject = {
     wholeList:[],
-    showItems:[]
+    showItems:[],
+    availableList:[],
+    unavailableList:[]
 };
 
 function initializeApp() {
@@ -29,18 +31,16 @@ function handleAPI() {
 }
 
 function handleAllItem(arr) {
-    var availableList = [];
-    var unavailableList = [];
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
-            availableList.push(handleItem(arr[i]));
+            productObject.availableList.push(handleItem(arr[i]));
         }else{
-            unavailableList.push(handleItem(arr[i]));
+            productObject.unavailableList.push(handleItem(arr[i]));
         }
     }
-    $('.container').append(availableList);
-    $('.container').append(unavailableList);
+    $('.container').append(productObject.availableList);
+    $('.container').append(productObject.unavailableList);
 }
 
 function handleItem(itemSrc) {
@@ -112,10 +112,31 @@ function sortProduct() {
     console.log('clicked' + selectValue);
     switch (selectValue){
         case ('Default'):
+            sortSuggested();
+            break;
+        case ('lowToHigh'):
+            sortLowToHigh();
+            break;
+        case ('highToLow'):
+            sortHighToLow();
 ///working on
     }
 }
 
+function sortSuggested() {
+    $('.container').empty();
+    $('.container').append(productObject.showItems);
+}
+
+function sortLowToHigh() {
+    $('.container').empty();
+
+}
+
+function sortHighToLow() {
+    $('.container').empty();
+
+}
 // **************************** Project section filter menu *****************
 
 filterSelection("all");
