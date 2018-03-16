@@ -50,6 +50,23 @@ function handleItem(itemSrc) {
     if(itemSrc['variants'][0]['available'] === true){
         item.addClass('available');
     }
+
+    var price = itemSrc['variants'][0]['price'];
+    switch (true){
+        case (price<10):
+            item.addClass('under_10');
+            break;
+        case (price<=20 && price>10):
+            item.addClass('10_to_20');
+            break;
+        case (price<=30  && price>20):
+            item.addClass('20_to_30');
+            break;
+        case (price>30):
+            item.addClass('over_30');
+            break;
+    }
+
     // console.log();
     // console.log(itemSrc['variants'][0]['available']);
     var itemImg = $('<img>',{
