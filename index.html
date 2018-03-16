@@ -13,9 +13,17 @@
     <div class="header">
     </div>
     <div class="bodyContainer">
-        <div class="filter col-md-2 col-xs-12"></div>
+        <div class="filter col-md-2 col-xs-12">
+            <div id="btnContainer" class="col-md-12">
+                <button id="total" class="filterBtn activeBtn" onclick="filterSelection('all')"> Show all</button>
+                <button id="ux" class="filterBtn" onclick="filterSelection('ux')"> User Experience</button>
+                <button id="code" class="filterBtn" onclick="filterSelection('code')"> Software Development</button>
+                <button id="graphic" class="filterBtn" onclick="filterSelection('graphic')"> Graphic Design</button>
+            </div>
+        </div>
 
-        <div class="container col-md-10">
+        <div class="container col-md-10 col-xs-12">
+
             <!--<div class="col-md-3">-->
             <!--</div>-->
         </div>
