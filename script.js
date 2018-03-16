@@ -28,7 +28,9 @@ function handleAPI() {
 function handleAllItem(arr) {
     var availableList = [];
     var unavailableList = [];
+    var wholeList = [];
     for(var i=0; i<arr.length; i++){
+        wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
             availableList.push(handleItem(arr[i]));
         }else{
