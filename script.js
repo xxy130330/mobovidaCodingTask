@@ -26,15 +26,17 @@ function handleAPI() {
 }
 
 function handleAllItem(arr) {
-    var itemsList = [];
+    var availableList = [];
+    var unavailableList = [];
     for(var i=0; i<arr.length; i++){
-        var divider = $('<hr>');
-        itemsList.push(handleItem(arr[i]));
-        if( $('body').clientWidth < '992px'){
-            itemsList.push(divider);  //????
+        if(handleItem(arr[i]).hasClass('available')){
+            availableList.push(handleItem(arr[i]));
+        }else{
+            unavailableList.push(handleItem(arr[i]));
         }
     }
-    $('.container').append(itemsList);
+    $('.container').append(availableList);
+    $('.container').append(unavailableList);
 }
 
 function handleItem(itemSrc) {
@@ -103,7 +105,7 @@ function handleItem(itemSrc) {
 
 function clickFunction() {
     console.log('clicked');
-};
+}
 
 // **************************** Project section filter menu *****************
 
