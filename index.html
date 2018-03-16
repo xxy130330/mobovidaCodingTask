@@ -12,12 +12,26 @@
 <body>
     <div class="header">
     </div>
-
     <div class="bodyContainer">
-        <!--<div class="col-md-3">-->
-        <!--</div>-->
-    </div>
+        <div class="filter col-md-2 col-xs-12">
+            <div id="btnContainer" class="col-md-12">
+                <button id="total" class="filterBtn activeBtn" onclick="filterSelection('all')"> Show all</button>
+                <h5>Availability:</h5>
+                <button id="available" class="filterBtn" onclick="filterSelection('available')"> Available</button>
+                <h5>Price Range:</h5>
+                <button id="under_10" class="filterBtn" onclick="filterSelection('under_10')"> Under $10</button>
+                <button id="10_to_20" class="filterBtn" onclick="filterSelection('10_to_20')"> $10 - $20</button>
+                <button id="20_to_30" class="filterBtn" onclick="filterSelection('20_to_30')"> $20 - $30</button>
+                <button id="over_30" class="filterBtn" onclick="filterSelection('over_30')"> Over $30</button>
+            </div>
+        </div>
 
+        <div class="container col-md-10 col-xs-12">
+
+            <!--<div class="col-md-3">-->
+            <!--</div>-->
+        </div>
+    </div>
     <div class="footer">
     </div>
 </body>

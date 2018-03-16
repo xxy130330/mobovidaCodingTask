@@ -1,9 +1,11 @@
 $(document).ready(initializeApp);
 
-var productObject = {};
+// var productObject = {};
 
 function initializeApp() {
     handleAPI();
+    $('.productName').click(clickFunction);
+    filterSelection("all");
 }
 
 function handleAPI() {
@@ -14,7 +16,7 @@ function handleAPI() {
             var productsList = data['products'];  //productList is an array
             // productObject.title = productsList[0]['title'];
             console.log(productsList);
-            handleAllItem(productsList); //?????
+            handleAllItem(productsList);
 
         },
         error: function () {
@@ -26,27 +28,135 @@ function handleAPI() {
 function handleAllItem(arr) {
     var itemsList = [];
     for(var i=0; i<arr.length; i++){
-        itemsList.push(handleItem(arr[i])); //??????
+        var divider = $('<hr>');
+        itemsList.push(handleItem(arr[i]));
+        if( $('body').clientWidth < '992px'){
+            itemsList.push(divider);  //????
+        }
     }
-    $('.bodyContainer').append(itemsList);
+    $('.container').append(itemsList);
 }
 
 function handleItem(itemSrc) {
     var item = $('<div>',{
-        class: 'item',
+        class: 'item col-md-3 filterDiv show',
         name: itemSrc.title,
         price: itemSrc['variants'][0]['price'],
-        compareAtPrice: itemSrc['variants'][0]['compare_at_price']
+        compareAtPrice: itemSrc['variants'][0]['compare_at_price'],
+        availability: itemSrc['variants'][0]['available'],
+        color: itemSrc['options'][0]['values'][0],
+        backUpColor: itemSrc['tags'][1]
     });
+
+    // console.log();
+    // console.log(itemSrc['variants'][0]['available']);
     var itemImg = $('<img>',{
-        src: itemSrc['images'][0]['src']
+        src: itemSrc['images'][0]['src'],
+        class: 'productImg'
     });
-    var itemName = itemSrc.title;
-    var itemPrice = itemSrc['variants'][0]['price'];
-    var itemComparePrice = `Compare with ${itemSrc['variants'][0]['compare_at_price']}`;
+    var itemName = $('<h5>',{
+        text: itemSrc.title,
+        class: 'productName',
+    });
+    var itemPrice = $('<h4>',{
+        text: `$${itemSrc['variants'][0]['price']}`,
+        class: 'productPrice'
+    });
+    var itemComparePrice = $('<h5>',{
+        text: `Compare with $${itemSrc['variants'][0]['compare_at_price']}`,
+        class: 'productComparePrice'
+    });
+    var itemAvailability = $('<h5>');
+
+    var price = itemSrc['variants'][0]['price'];
+    switch (true){
+        case (price<10):
+            item.addClass('under_10');
+            break;
+        case (price<=20 && price>10):
+            item.addClass('10_to_20');
+            break;
+        case (price<=30  && price>20):
+            item.addClass('20_to_30');
+            break;
+        case (price>30):
+            item.addClass('over_30');
+            break;
+    }
+
+    if(itemSrc['variants'][0]['available'] === true){
+        item.addClass('available');
+        item.append(itemAvailability.text('Available'));
+    }else{
+        item.append(itemAvailability.text('Unavailable').attr('style', 'color: red'));
+    }
     item.append(itemImg);
     item.append(itemName);
     item.append(itemPrice);
-    item.append(itemComparePrice);
+    if(itemSrc['variants'][0]['compare_at_price'] !== null) {
+        item.append(itemComparePrice);
+    };
     return item;
 }
+
+function clickFunction() {
+    console.log('clicked');
+};
+
+// **************************** Project section filter menu *****************
+
+filterSelection("all");
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDiv");
+    if (c === "all") c = "";
+    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+    for (i = 0; i < x.length; i++) {
+        removeClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) toggleClass(x[i], "show");
+    }
+}
+
+// Show filtered elements
+function toggleClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {
+            element.className += " " + arr2[i];
+        }
+    }
+}
+
+// Hide elements that are not selected
+function removeClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+        }
+    }
+    element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+//
+// var bodyContainer = document.getElementsByClassName('bodyContainer');
+// var productContainer = bodyContainer.getElementsByClassName('container');
+// var btnContainer = productContainer.getElementById("btnContainer");
+// var btns = btnContainer.getElementsByClassName("filterBtn");
+var btns = $('.filterBtn');
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+        var current = $('.activeBtn');
+        // var current = document.getElementsByClassName("activeBtn");
+        // current.toggleClass('activeBtn');
+        current[0].className = current[0].className.replace(" activeBtn", "");
+        this.className = "filterBtn activeBtn";
+    });
+}
+
+
