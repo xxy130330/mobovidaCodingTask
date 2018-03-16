@@ -42,8 +42,13 @@ function handleItem(itemSrc) {
         class: 'item col-md-3 filterDiv show',
         name: itemSrc.title,
         price: itemSrc['variants'][0]['price'],
-        compareAtPrice: itemSrc['variants'][0]['compare_at_price']
+        compareAtPrice: itemSrc['variants'][0]['compare_at_price'],
+        availability: itemSrc['variants'][0]['available'],
+        color: itemSrc['options'][0]['values'][0],
+        backUpColor: itemSrc['tags'][1]
     });
+    // console.log();
+    // console.log(itemSrc['variants'][0]['available']);
     var itemImg = $('<img>',{
         src: itemSrc['images'][0]['src'],
         class: 'productImg'
@@ -121,7 +126,9 @@ function removeClass(element, name) {
 var btns = $('.filterBtn');
 for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("activeBtn");
+        var current = $('.activeBtn');
+        // var current = document.getElementsByClassName("activeBtn");
+        // current.toggleClass('activeBtn');
         current[0].className = current[0].className.replace(" activeBtn", "");
         this.className = "filterBtn activeBtn";
     });
