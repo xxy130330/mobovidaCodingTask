@@ -39,7 +39,7 @@ function handleAllItem(arr) {
 
 function handleItem(itemSrc) {
     var item = $('<div>',{
-        class: 'item col-md-3 filterDiv show',
+        class: 'item col-md-3 filterDiv show availability',
         name: itemSrc.title,
         price: itemSrc['variants'][0]['price'],
         compareAtPrice: itemSrc['variants'][0]['compare_at_price'],
@@ -84,14 +84,16 @@ function handleItem(itemSrc) {
             break;
     }
 
+    item.append(itemImg);
+    item.append(itemName);
+    item.append($('<br>'));
     if(itemSrc['variants'][0]['available'] === true){
         item.addClass('available');
         item.append(itemAvailability.text('Available'));
     }else{
         item.append(itemAvailability.text('Unavailable').attr('style', 'color: red'));
     }
-    item.append(itemImg);
-    item.append(itemName);
+
     item.append(itemPrice);
     if(itemSrc['variants'][0]['compare_at_price'] !== null) {
         item.append(itemComparePrice);

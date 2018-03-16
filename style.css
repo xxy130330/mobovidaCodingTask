@@ -47,6 +47,10 @@ h5.productName{
     height:25vh;
 }
 
+
+h5.availability{
+    display: inline;
+}
 /*.footer{*/
     /*position: relative;*/
     /*bottom: 0px;*/
