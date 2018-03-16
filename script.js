@@ -1,6 +1,9 @@
 $(document).ready(initializeApp);
 
-// var productObject = {};
+var productObject = {
+    wholeList:[],
+    showItems:[]
+};
 
 function initializeApp() {
     handleAPI();
@@ -28,9 +31,8 @@ function handleAPI() {
 function handleAllItem(arr) {
     var availableList = [];
     var unavailableList = [];
-    var wholeList = [];
     for(var i=0; i<arr.length; i++){
-        wholeList.push(handleItem(arr[i]));
+        productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
             availableList.push(handleItem(arr[i]));
         }else{
@@ -101,14 +103,17 @@ function handleItem(itemSrc) {
     item.append(itemPrice);
     if(itemSrc['variants'][0]['compare_at_price'] !== null) {
         item.append(itemComparePrice);
-    };
+    }
     return item;
 }
 
 function sortProduct() {
     var selectValue = $('#sortMenu').val();
-    // $('#sortMenu').options[0].selected = true;
     console.log('clicked' + selectValue);
+    switch (selectValue){
+        case ('Default'):
+///working on
+    }
 }
 
 // **************************** Project section filter menu *****************
@@ -116,12 +121,19 @@ function sortProduct() {
 filterSelection("all");
 function filterSelection(c) {
     var x, i;
+    productObject.showItems = [];
     x = document.getElementsByClassName("filterDiv");
-    if (c === "all") c = "";
+    if (c === "all") {
+        c = "";
+        productObject.showItems = productObject.wholeList;
+    }
     // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
     for (i = 0; i < x.length; i++) {
         removeClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) toggleClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) {
+            toggleClass(x[i], "show");
+            productObject.showItems.push(x[i]);
+        }
     }
 }
 
