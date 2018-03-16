@@ -4,7 +4,6 @@ var productObject = {};
 
 function initializeApp() {
     handleAPI();
-    handleAllItem(productObject.productsList); //?????
 }
 
 function handleAPI() {
@@ -12,13 +11,16 @@ function handleAPI() {
         method: 'get',
         url: 'https://www.wirelessemporium.com/products.json',
         success: function (data) {
-            productObject.productsList = data['products'];  //productList is an array
-            console.log(data);
+            var productsList = data['products'];  //productList is an array
+            // productObject.title = productsList[0]['title'];
+            console.log(productsList);
+            handleAllItem(productsList); //?????
+
         },
         error: function () {
             //error msg
         }
-    })
+    });
 }
 
 function handleAllItem(arr) {
@@ -27,18 +29,18 @@ function handleAllItem(arr) {
         itemsList.push(handleItem(arr[i])); //??????
     }
     $('.bodyContainer').append(itemsList);
-
 }
 
 function handleItem(itemSrc) {
     var item = $('<div>',{
         class: 'item',
         name: itemSrc.title,
-        price: itemSrc['variants']['price'],
-        compareAtPrice: itemSrc['variants']['compare_at_price']
+        price: itemSrc['variants'][0]['price'],
+        compareAtPrice: itemSrc['variants'][0]['compare_at_price']
     });
     var itemImg = $('<img>',{
         src: itemSrc['images'][0]['src']
     });
     item.append(itemImg);
+    return item;
 }
