@@ -26,27 +26,41 @@ function handleAPI() {
 function handleAllItem(arr) {
     var itemsList = [];
     for(var i=0; i<arr.length; i++){
-        itemsList.push(handleItem(arr[i])); //??????
+        // var divider = $('<hr>');
+        itemsList.push(handleItem(arr[i]));
+        // itemsList.push(divider);
     }
-    $('.bodyContainer').append(itemsList);
+    $('.container').append(itemsList);
 }
 
 function handleItem(itemSrc) {
     var item = $('<div>',{
-        class: 'item',
+        class: 'item col-md-3',
         name: itemSrc.title,
         price: itemSrc['variants'][0]['price'],
         compareAtPrice: itemSrc['variants'][0]['compare_at_price']
     });
     var itemImg = $('<img>',{
-        src: itemSrc['images'][0]['src']
+        src: itemSrc['images'][0]['src'],
+        class: 'productImg'
     });
-    var itemName = itemSrc.title;
-    var itemPrice = itemSrc['variants'][0]['price'];
-    var itemComparePrice = `Compare with ${itemSrc['variants'][0]['compare_at_price']}`;
+    var itemName = $('<h5>',{
+        text: itemSrc.title,
+        class: 'productName'
+    });
+    var itemPrice = $('<h4>',{
+        text: `$${itemSrc['variants'][0]['price']}`,
+        class: 'productPrice'
+    });
+    var itemComparePrice = $('<h5>',{
+        text: `Compare with $${itemSrc['variants'][0]['compare_at_price']}`,
+        class: 'productComparePrice'
+    });
     item.append(itemImg);
     item.append(itemName);
     item.append(itemPrice);
-    item.append(itemComparePrice);
+    if(itemSrc['variants'][0]['compare_at_price'] !== null) {
+        item.append(itemComparePrice);
+    };
     return item;
 }
