@@ -43,7 +43,7 @@ function handleItem(itemSrc) {
     });
     var itemName = itemSrc.title;
     var itemPrice = itemSrc['variants'][0]['price'];
-    var itemComparePrice = itemSrc['variants'][0]['compare_at_price'];
+    var itemComparePrice = `Compare with ${itemSrc['variants'][0]['compare_at_price']}`;
     item.append(itemImg);
     item.append(itemName);
     item.append(itemPrice);
