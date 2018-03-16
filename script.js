@@ -47,25 +47,6 @@ function handleItem(itemSrc) {
         color: itemSrc['options'][0]['values'][0],
         backUpColor: itemSrc['tags'][1]
     });
-    if(itemSrc['variants'][0]['available'] === true){
-        item.addClass('available');
-    }
-
-    var price = itemSrc['variants'][0]['price'];
-    switch (true){
-        case (price<10):
-            item.addClass('under_10');
-            break;
-        case (price<=20 && price>10):
-            item.addClass('10_to_20');
-            break;
-        case (price<=30  && price>20):
-            item.addClass('20_to_30');
-            break;
-        case (price>30):
-            item.addClass('over_30');
-            break;
-    }
 
     // console.log();
     // console.log(itemSrc['variants'][0]['available']);
@@ -85,6 +66,30 @@ function handleItem(itemSrc) {
         text: `Compare with $${itemSrc['variants'][0]['compare_at_price']}`,
         class: 'productComparePrice'
     });
+    var itemAvailability = $('<h5>');
+
+    var price = itemSrc['variants'][0]['price'];
+    switch (true){
+        case (price<10):
+            item.addClass('under_10');
+            break;
+        case (price<=20 && price>10):
+            item.addClass('10_to_20');
+            break;
+        case (price<=30  && price>20):
+            item.addClass('20_to_30');
+            break;
+        case (price>30):
+            item.addClass('over_30');
+            break;
+    }
+
+    if(itemSrc['variants'][0]['available'] === true){
+        item.addClass('available');
+        item.append(itemAvailability.text('Available'));
+    }else{
+        item.append(itemAvailability.text('Unavailable').attr('style', 'color: red'));
+    }
     item.append(itemImg);
     item.append(itemName);
     item.append(itemPrice);
