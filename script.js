@@ -132,34 +132,19 @@ function sortSuggested() {
 }
 
 function sortLowToHigh() {
-    var wrapper = $('.container');
+    var wrapper = $('.listContainer');
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(a.getAttribute('price')) - parseFloat(b.getAttribute('price'));
     }).appendTo( wrapper );
 }
 
 function sortHighToLow() {
-    var wrapper = $('.container');
+    var wrapper = $('.listContainer');
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(b.getAttribute('price')) - parseFloat(a.getAttribute('price'));
     }).appendTo( wrapper );
 }
 
-// function checkIfShowItemsExist() {
-//     if(!productObject.showItems){
-//         noShowItemErrMsg();
-//     }else {
-//         $('.listContainer').append(productObject.showItems);
-//     }
-// }
-
-// function sortPrice() {
-//     $('.item').sort(function (a, b) {
-//         var contentA =parseInt( $(a).attr('price'));
-//         var contentB =parseInt( $(b).attr('price'));
-//         return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-//     }).appendTo($('.listContainer'));
-// }
 
     function noShowItemErrMsg() {
         if (productObject.showItems.length === 0) {
