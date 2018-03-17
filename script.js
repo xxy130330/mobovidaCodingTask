@@ -64,6 +64,8 @@ function handleItem(itemSrc) {
     var itemName = $('<h5>',{
         text: itemSrc.title,
         class: 'productName',
+        'data-toggle': "modal",
+        'href': '#itemModalLabel'
     });
     var itemPrice = $('<h4>',{
         text: `$${itemSrc['variants'][0]['price']}`,
@@ -155,12 +157,13 @@ function noShowItemErrMsg() {
 
 function displayItemModal() {
     console.log('modal display');
+    $('#itemModalLabel').show();
     var name = $(this).text();
     console.log(name);
     // var imgArr = this.getAttribute('images');
-    $('#itemModalLabel').append(name);
+    $('.modal-title').append(name);
     // for(var imgIndex=0; imgIndex < imgArr.length; imgIndex++) {
-    $('.modal-body').append($(this).attr(['images'][0]['src']));
+    // $('.modal-body').append($(this).attr(['images'][0]['src']));
     // }
 }
 // **************************** Project section filter menu *****************

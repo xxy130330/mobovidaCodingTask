@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
     <title>Title</title>
 </head>
 <body>
@@ -52,19 +54,6 @@
                 </select>
             </div>
             <div class='listContainer col-md-12 col-xs-12'>
-                <div id="itemModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel" aria-hidden="true">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3 id="itemModalLabel">Modal header</h3>
-                    </div>
-                    <div class="modal-body">
-                        ////
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                        <!--<button class="btn btn-primary">Save changes</button>-->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -98,6 +87,22 @@
             <h6>Sign up to get the latest on sales, new releases and more ...</h6>
             <input type="text" value="Your email"><br>
             <button type="submit">SUBSCRIBE</button>
+        </div>
+    </div>
+    <div class="modal" id="itemModalLabel" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
