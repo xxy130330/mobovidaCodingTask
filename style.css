@@ -49,7 +49,16 @@
 .mainMenu li{
     display: block;
     float: left;
-    margin:auto 5%;
+    margin:auto 3%;
+    padding:1%;
+}
+
+.mainMenu>li:first-child{
+    border-bottom: 3px solid lightpink;
+}
+
+.mainMenu li:hover{
+    border-bottom: 3px solid lightpink;
 }
 /********************BODY*******************/
 
