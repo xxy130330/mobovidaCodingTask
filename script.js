@@ -116,6 +116,7 @@ function sortProduct() {
             sortSuggested();
             break;
         case ('lowToHigh'):
+            // getSorted('.show', 'price');
             sortLowToHigh();
             break;
         case ('highToLow'):
@@ -132,16 +133,49 @@ function sortSuggested() {
 }
 
 function sortLowToHigh() {
-    $('.listContainer').empty();
-    productObject.showItems.sort(function (a, b) {
-        if (a[0]) {
-            return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
-        } else {
-            return parseFloat(a['attributes'][2]['value']) - parseFloat(b['attributes'][2]['value'])
-        }
-    });
-    $('.listContainer').append(productObject.showItems);
+    // $('.listContainer').empty();
+    var wrapper = $('.container');
+    wrapper.find('.filterDiv').sort(function (a, b) {
+        return +a.price - +b.price;
+    }).appendTo( wrapper );
+
+    // $('.item').sort(function (a, b) {
+    //     var contentA = parseFloat($(a).attr('price'));
+    //     var contentB = parseFloat($(b).attr('price'));
+    //     return contentA - contentB;
+    // });
 }
+
+
+        // function getSorted(selector, attrName) {
+        //     return $($(selector).toArray().sort(function(a, b){
+        //         var aVal = parseInt(a.getAttribute(attrName)),
+        //             bVal = parseInt(b.getAttribute(attrName));
+        //         return aVal - bVal;
+        //     }));
+        // }
+
+
+        // return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+
+        // return (parseFloat($(a).attr('price'))) - (parseFloat($(b).attr('price')));
+        // if (a[0]) {
+        //     return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
+        // } else {
+        //     return parseFloat(a['attributes'][2]['value']) - parseFloat(b['attributes'][2]['value'])
+        // }
+    // });
+    // $('.listContainer').append( $('.item') );
+
+    // productObject.showItems.sort(function (a, b) {
+    //     if (a[0]) {
+    //         return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
+    //     } else {
+    //         return parseFloat(a['attributes'][2]['value']) - parseFloat(b['attributes'][2]['value'])
+    //     }
+    // });
+    // $('.listContainer').append(productObject.showItems);
+// }
 
     // var x = document.getElementsByClassName("filterDiv");
     // // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
