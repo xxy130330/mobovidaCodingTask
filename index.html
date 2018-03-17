@@ -29,21 +29,11 @@
         <div class="container col-md-10 col-xs-12">
             <div class="sort col-md-12 col-xs-12">
                 <h5>Sort by</h5>
-                <select name="sortMenu" id="sortMenu">
+                <select name="sortMenu" id="sortMenu"  onchange="sortProduct()">
                     <option value="Default">Suggested</option>
-                    <option value="lowToHight">Price Low To High</option>
-                    <option value="highToLow">Price High To Low</option>
+                    <option value="lowToHigh">Price Low To High</option>
+                    <option value="highToLow" id="highLow">Price High To Low</option>
                 </select>
-                <!--<div class="dropDown">-->
-                    <!--<button class="btn btn-secondary dropDown-toggle" type="button" id="dropDownMenuButton" data-toggle="dropDown" aria-haspopup="true" aria-expanded="false">-->
-                        <!--Sort:-->
-                    <!--</button>-->
-                    <!--<div class="dropDown-menu" aria-labelledby="dropDownMenuButton">-->
-                        <!--<a class="dropDown-item" href="#">Action</a>-->
-                        <!--<a class="dropDown-item" href="#">Another action</a>-->
-                        <!--<a class="dropDown-item" href="#">Something else here</a>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </div>
     </div>
