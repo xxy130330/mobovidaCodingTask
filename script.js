@@ -195,6 +195,17 @@ function sortHighToLow() {
                 element.className += " " + arr2[i];
             }
         }
+        var btns = $('.filterBtn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = $('.activeBtn');
+                // var current = document.getElementsByClassName("activeBtn");
+                // current.toggleClass('activeBtn');
+                current[0].className = current[0].className.replace(" activeBtn", "");
+                this.className = "filterBtn activeBtn";
+            });
+        }
+
     }
 
 // Hide elements that are not selected
@@ -216,16 +227,6 @@ function sortHighToLow() {
 // var productContainer = bodyContainer.getElementsByClassName('container');
 // var btnContainer = productContainer.getElementById("btnContainer");
 // var btns = btnContainer.getElementsByClassName("filterBtn");
-    var btns = $('.filterBtn');
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = $('.activeBtn');
-            // var current = document.getElementsByClassName("activeBtn");
-            // current.toggleClass('activeBtn');
-            current[0].className = current[0].className.replace(" activeBtn", "");
-            this.className = "filterBtn activeBtn";
-        });
-    }
 
 
 
