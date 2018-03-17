@@ -59,6 +59,7 @@
 
 .mainMenu li:hover{
     border-bottom: 3px solid lightpink;
+    cursor: pointer;
 }
 /********************BODY*******************/
 
@@ -251,4 +252,30 @@ h5.availability{
 .filter button {
     margin: 4% 0;
     width:90%;
+}
+
+
+
+/*******************FOOTER*******************/
+
+.footerMenu ul li{
+    display: block;
+}
+
+.footerMenu ul li:hover{
+    border-bottom: 3px solid lightpink;
+    cursor: pointer;
+}
+
+.footerMenu input{
+    margin-bottom: 2%;
+    width: 40%;
+}
+
+.footerMenu button:hover{
+    background-color: lightpink;
+}
+
+.footerMenu button{
+    border-radius: ;
 }
