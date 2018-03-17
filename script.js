@@ -31,6 +31,7 @@ function handleAPI() {
 }
 
 function handleAllItem(arr) {
+    // productObject.wholeList = [];
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
@@ -39,8 +40,8 @@ function handleAllItem(arr) {
             productObject.unavailableList.push(handleItem(arr[i]));
         }
     }
-    $('.container').append(productObject.availableList);
-    $('.container').append(productObject.unavailableList);
+    $('.listContainer').append(productObject.availableList);
+    $('.listContainer').append(productObject.unavailableList);
 }
 
 function handleItem(itemSrc) {
@@ -124,64 +125,105 @@ function sortProduct() {
 }
 
 function sortSuggested() {
-    $('.item').empty();
-    $('.container').append(productObject.showItems);
+    $('.listContainer').empty();
+    $('.listContainer').append(productObject.availableList);
+    $('.listContainer').append(productObject.unavailableList);
+    // noShowItemErrMsg();
 }
 
 function sortLowToHigh() {
-    $('.item').empty();
-
+    var wrapper = $('.container');
+    wrapper.find('.filterDiv').sort(function (a, b) {
+        return parseFloat(a.getAttribute('price')) - parseFloat(b.getAttribute('price'));
+    }).appendTo( wrapper );
 }
 
 function sortHighToLow() {
-    $('.item').empty();
-
+    var wrapper = $('.container');
+    wrapper.find('.filterDiv').sort(function (a, b) {
+        return parseFloat(b.getAttribute('price')) - parseFloat(a.getAttribute('price'));
+    }).appendTo( wrapper );
 }
+
+// function checkIfShowItemsExist() {
+//     if(!productObject.showItems){
+//         noShowItemErrMsg();
+//     }else {
+//         $('.listContainer').append(productObject.showItems);
+//     }
+// }
+
+// function sortPrice() {
+//     $('.item').sort(function (a, b) {
+//         var contentA =parseInt( $(a).attr('price'));
+//         var contentB =parseInt( $(b).attr('price'));
+//         return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+//     }).appendTo($('.listContainer'));
+// }
+
+    function noShowItemErrMsg() {
+        if (productObject.showItems.length === 0) {
+            $('.listContainer').text('Sorry, there\'s match item!');
+        }
+    }
+
 // **************************** Project section filter menu *****************
 
-filterSelection("all");
-function filterSelection(c) {
-    var x, i;
-    productObject.showItems = [];
-    x = document.getElementsByClassName("filterDiv");
-    if (c === "all") {
-        c = "";
-        productObject.showItems = productObject.wholeList;
-    }
-    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-    for (i = 0; i < x.length; i++) {
-        removeClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) {
-            toggleClass(x[i], "show");
-            productObject.showItems.push(x[i]);
+    filterSelection("all");
+
+    function filterSelection(c) {
+        var x, i;
+        productObject.showItems = [];
+        // x = productObject.wholeList;
+        x = document.getElementsByClassName("filterDiv");
+        if (c === "all") {
+            c = "";
+            // for (i = 0; i < x.length; i++) {
+            //     removeClass(x[i], "show");
+            //     if (x[i].className.indexOf(c) > -1) {
+            //         toggleClass(x[i], "show");
+            //     }
+            // }
+            productObject.showItems = productObject.wholeList;
+        }
+        // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+        for (i = 0; i < x.length; i++) {
+            removeClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) {
+                toggleClass(x[i], "show");
+                // if(productObject.showItems.indexOf(x[i]) === -1) {
+                productObject.showItems.push(x[i]);
+                // }
+                // productObject.showItems[i] = x[i];
+
+            }
         }
     }
-}
 
 // Show filtered elements
-function toggleClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {
-            element.className += " " + arr2[i];
+    function toggleClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
+            }
         }
     }
-}
 
 // Hide elements that are not selected
-function removeClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-            arr1.splice(arr1.indexOf(arr2[i]), 1);
+    function removeClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
         }
+        element.className = arr1.join(" ");
     }
-    element.className = arr1.join(" ");
-}
 
 // Add active class to the current control button (highlight it)
 //
@@ -189,15 +231,16 @@ function removeClass(element, name) {
 // var productContainer = bodyContainer.getElementsByClassName('container');
 // var btnContainer = productContainer.getElementById("btnContainer");
 // var btns = btnContainer.getElementsByClassName("filterBtn");
-var btns = $('.filterBtn');
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-        var current = $('.activeBtn');
-        // var current = document.getElementsByClassName("activeBtn");
-        // current.toggleClass('activeBtn');
-        current[0].className = current[0].className.replace(" activeBtn", "");
-        this.className = "filterBtn activeBtn";
-    });
-}
+    var btns = $('.filterBtn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = $('.activeBtn');
+            // var current = document.getElementsByClassName("activeBtn");
+            // current.toggleClass('activeBtn');
+            current[0].className = current[0].className.replace(" activeBtn", "");
+            this.className = "filterBtn activeBtn";
+        });
+    }
+
 
 
