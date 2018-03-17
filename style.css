@@ -105,6 +105,11 @@ h5.productName{
     text-decoration: underline;
 }
 
+h5.productName:hover{
+    cursor: pointer;
+    color: lightgrey;
+}
+
 .item{
     margin-top: 8%;
     margin-bottom: 8%;
