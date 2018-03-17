@@ -31,6 +31,7 @@ function handleAPI() {
 }
 
 function handleAllItem(arr) {
+    // productObject.wholeList = [];
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
@@ -127,19 +128,34 @@ function sortSuggested() {
     $('.listContainer').empty();
     $('.listContainer').append(productObject.availableList);
     $('.listContainer').append(productObject.unavailableList);
+    // noShowItemErrMsg();
 }
 
 function sortLowToHigh() {
     $('.listContainer').empty();
     productObject.showItems.sort(function (a, b) {
-        return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
+        if(a[0]){
+            return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
+        }else {
+            return parseFloat(a['attributes'][2]['value']) - parseFloat(b['attributes'][2]['value'])
+        }
     });
     $('.listContainer').append(productObject.showItems);
+    // noShowItemErrMsg();
 }
 
 
 function sortHighToLow() {
     $('.listContainer').empty();
+    productObject.showItems.sort(function (a, b) {
+        if(a[0]){
+            return parseFloat(b[0]['attributes'][2]['value']) - parseFloat(a[0]['attributes'][2]['value'])
+        }else {
+            return parseFloat(b['attributes'][2]['value']) - parseFloat(a['attributes'][2]['value'])
+        }
+    });
+    $('.listContainer').append(productObject.showItems);
+    // noShowItemErrMsg();
 //?
 }
 
@@ -160,14 +176,17 @@ function sortHighToLow() {
 // }
 
 function noShowItemErrMsg() {
-    $('.listContainer').text('Sorry, there\'s match item!');
+    if(productObject.showItems.length === 0) {
+        $('.listContainer').text('Sorry, there\'s match item!');
+    }
 }
 // **************************** Project section filter menu *****************
 
 filterSelection("all");
 function filterSelection(c) {
-    var x, i;
+    var x,i;
     productObject.showItems = [];
+    // x = productObject.wholeList;
     x = document.getElementsByClassName("filterDiv");
     if (c === "all") {
         c = "";
@@ -178,7 +197,11 @@ function filterSelection(c) {
         removeClass(x[i], "show");
         if (x[i].className.indexOf(c) > -1) {
             toggleClass(x[i], "show");
-            productObject.showItems.push(x[i]);
+            // if(productObject.showItems.indexOf(x[i]) === -1) {
+                productObject.showItems.push(x[i]);
+            // }
+            // productObject.showItems[i] = x[i];
+
         }
     }
 }
