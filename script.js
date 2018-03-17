@@ -132,34 +132,19 @@ function sortSuggested() {
 }
 
 function sortLowToHigh() {
-    var wrapper = $('.container');
+    var wrapper = $('.listContainer');
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(a.getAttribute('price')) - parseFloat(b.getAttribute('price'));
     }).appendTo( wrapper );
 }
 
 function sortHighToLow() {
-    var wrapper = $('.container');
+    var wrapper = $('.listContainer');
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(b.getAttribute('price')) - parseFloat(a.getAttribute('price'));
     }).appendTo( wrapper );
 }
 
-// function checkIfShowItemsExist() {
-//     if(!productObject.showItems){
-//         noShowItemErrMsg();
-//     }else {
-//         $('.listContainer').append(productObject.showItems);
-//     }
-// }
-
-// function sortPrice() {
-//     $('.item').sort(function (a, b) {
-//         var contentA =parseInt( $(a).attr('price'));
-//         var contentB =parseInt( $(b).attr('price'));
-//         return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-//     }).appendTo($('.listContainer'));
-// }
 
     function noShowItemErrMsg() {
         if (productObject.showItems.length === 0) {
@@ -210,6 +195,17 @@ function sortHighToLow() {
                 element.className += " " + arr2[i];
             }
         }
+        var btns = $('.filterBtn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = $('.activeBtn');
+                // var current = document.getElementsByClassName("activeBtn");
+                // current.toggleClass('activeBtn');
+                current[0].className = current[0].className.replace(" activeBtn", "");
+                this.className = "filterBtn activeBtn";
+            });
+        }
+
     }
 
 // Hide elements that are not selected
@@ -231,16 +227,6 @@ function sortHighToLow() {
 // var productContainer = bodyContainer.getElementsByClassName('container');
 // var btnContainer = productContainer.getElementById("btnContainer");
 // var btns = btnContainer.getElementsByClassName("filterBtn");
-    var btns = $('.filterBtn');
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = $('.activeBtn');
-            // var current = document.getElementsByClassName("activeBtn");
-            // current.toggleClass('activeBtn');
-            current[0].className = current[0].className.replace(" activeBtn", "");
-            this.className = "filterBtn activeBtn";
-        });
-    }
 
 
 
