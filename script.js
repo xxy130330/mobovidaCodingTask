@@ -39,8 +39,8 @@ function handleAllItem(arr) {
             productObject.unavailableList.push(handleItem(arr[i]));
         }
     }
-    $('.container').append(productObject.availableList);
-    $('.container').append(productObject.unavailableList);
+    $('.listContainer').append(productObject.availableList);
+    $('.listContainer').append(productObject.unavailableList);
 }
 
 function handleItem(itemSrc) {
@@ -124,18 +124,43 @@ function sortProduct() {
 }
 
 function sortSuggested() {
-    $('.item').empty();
-    $('.container').append(productObject.showItems);
+    $('.listContainer').empty();
+    $('.listContainer').append(productObject.availableList);
+    $('.listContainer').append(productObject.unavailableList);
 }
 
 function sortLowToHigh() {
-    $('.item').empty();
-
+    $('.listContainer').empty();
+    productObject.showItems.sort(function (a, b) {
+        return parseFloat(a[0]['attributes'][2]['value']) - parseFloat(b[0]['attributes'][2]['value'])
+    });
+    $('.listContainer').append(productObject.showItems);
 }
 
-function sortHighToLow() {
-    $('.item').empty();
 
+function sortHighToLow() {
+    $('.listContainer').empty();
+//?
+}
+
+// function checkIfShowItemsExist() {
+//     if(!productObject.showItems){
+//         noShowItemErrMsg();
+//     }else {
+//         $('.listContainer').append(productObject.showItems);
+//     }
+// }
+
+// function sortPrice() {
+//     $('.item').sort(function (a, b) {
+//         var contentA =parseInt( $(a).attr('price'));
+//         var contentB =parseInt( $(b).attr('price'));
+//         return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+//     }).appendTo($('.listContainer'));
+// }
+
+function noShowItemErrMsg() {
+    $('.listContainer').text('Sorry, there\'s match item!');
 }
 // **************************** Project section filter menu *****************
 
