@@ -124,17 +124,17 @@ function sortProduct() {
 }
 
 function sortSuggested() {
-    $('.container').empty();
+    $('.item').empty();
     $('.container').append(productObject.showItems);
 }
 
 function sortLowToHigh() {
-    $('.container').empty();
+    $('.item').empty();
 
 }
 
 function sortHighToLow() {
-    $('.container').empty();
+    $('.item').empty();
 
 }
 // **************************** Project section filter menu *****************
