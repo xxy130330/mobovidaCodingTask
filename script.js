@@ -4,12 +4,13 @@ var productObject = {
     wholeList:[],
     showItems:[],
     availableList:[],
-    unavailableList:[]
+    unavailableList:[],
+    // flag: false
 };
 
 function initializeApp() {
     handleAPI();
-    filterSelection("all")
+    // filterSelection("all")
     // $('.productName').click(displayItemModal);
 }
 
@@ -43,6 +44,8 @@ function handleAllItem(arr) {
     }
     $('.listContainer').append(productObject.availableList);
     $('.listContainer').append(productObject.unavailableList);
+    productObject.flag = true;
+    console.log(productObject.flag);
 }
 
 function handleItem(itemSrc) {
@@ -166,6 +169,7 @@ function noShowItemErrMsg() {
     // setTimeout(function(){ errMsgModal(); }, 3000);
 
     // setInterval(, 5000);
+
     errMsgModal();
 }
 
@@ -247,9 +251,11 @@ $(function($){
 
             }
         }
-        setTimeout(function(){ noShowItemErrMsg(); }, 3000);
+        // while (productObject.flag) {
+        //     setTimeout(function(){ noShowItemErrMsg(); }, 350);
 
-        // noShowItemErrMsg();
+            noShowItemErrMsg();
+        // }
     }
 
 // Show filtered elements
