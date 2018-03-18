@@ -101,7 +101,7 @@ function handleItem(itemSrc) {
         item.addClass('available');
         item.append(itemAvailability.text('Available'));
     }else{
-        item.append(itemAvailability.text('Unavailable').attr('style', 'color: red'));
+        item.append(itemAvailability.text('SOLD OUT!').attr('style', 'color: red'));
     }
 
     item.append(itemPrice);
@@ -131,7 +131,7 @@ function sortSuggested() {
     $('.listContainer').empty();
     $('.listContainer').append(productObject.availableList);
     $('.listContainer').append(productObject.unavailableList);
-    // noShowItemErrMsg();
+    noShowItemErrMsg();
 }
 
 function sortLowToHigh() {
@@ -139,6 +139,7 @@ function sortLowToHigh() {
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(a.getAttribute('price')) - parseFloat(b.getAttribute('price'));
     }).appendTo( wrapper );
+    noShowItemErrMsg();
 }
 
 function sortHighToLow() {
@@ -146,13 +147,22 @@ function sortHighToLow() {
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(b.getAttribute('price')) - parseFloat(a.getAttribute('price'));
     }).appendTo( wrapper );
+    noShowItemErrMsg();
 }
 
 
 function noShowItemErrMsg() {
-    if (productObject.showItems.length === 0) {
-        $('.listContainer').text('Sorry, there\'s match item!');
+    var itemDivArr = $('.filterDiv');
+    // var flag = false;
+    console.log('function');
+    for(var q=0; q<itemDivArr.length; q++){
+        console.log(itemDivArr[q]);
+        if ( $(itemDivArr[q]).hasClass('show') ) {
+            // flag = true;
+            return;
+        }
     }
+    $('.listContainer').text('Sorry, there\'s no matched item!');
 }
 
 function displayItemModal() {
@@ -213,6 +223,7 @@ function closeItemModal() {
 
             }
         }
+        noShowItemErrMsg();
     }
 
 // Show filtered elements
