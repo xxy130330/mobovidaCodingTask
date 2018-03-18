@@ -9,8 +9,8 @@ var productObject = {
 
 function initializeApp() {
     handleAPI();
-    // $('.productName').click(clickFunction);
-    filterSelection("all");
+    filterSelection("all")
+    // $('.productName').click(displayItemModal);
 }
 
 function handleAPI() {
@@ -52,7 +52,7 @@ function handleItem(itemSrc) {
         compareAtPrice: itemSrc['variants'][0]['compare_at_price'],
         availability: itemSrc['variants'][0]['available'],
         color: itemSrc['options'][0]['values'][0],
-        backUpColor: itemSrc['tags'][1]
+        backUpColor: itemSrc['tags'][1],
     });
 
     // console.log();
@@ -64,6 +64,8 @@ function handleItem(itemSrc) {
     var itemName = $('<h5>',{
         text: itemSrc.title,
         class: 'productName',
+        'data-toggle': "modal",
+        'data-target': '#itemModalLabel'
     });
     var itemPrice = $('<h4>',{
         text: `$${itemSrc['variants'][0]['price']}`,
@@ -91,6 +93,7 @@ function handleItem(itemSrc) {
             break;
     }
 
+    itemName.click(displayItemModal);
     item.append(itemImg);
     item.append(itemName);
     item.append($('<br>'));
@@ -146,12 +149,27 @@ function sortHighToLow() {
 }
 
 
-    function noShowItemErrMsg() {
-        if (productObject.showItems.length === 0) {
-            $('.listContainer').text('Sorry, there\'s match item!');
-        }
+function noShowItemErrMsg() {
+    if (productObject.showItems.length === 0) {
+        $('.listContainer').text('Sorry, there\'s match item!');
     }
+}
 
+function displayItemModal() {
+    console.log('modal display');
+    $('#itemModalLabel').show();
+    var name = $(this).text();
+    console.log(name);
+    // var imgArr = this.getAttribute('images');
+    $('.modal-title').append(name);
+    // for(var imgIndex=0; imgIndex < imgArr.length; imgIndex++) {
+    // $('.modal-body').append($(this).attr(['images'][0]['src']));
+    // }
+}
+
+function closeItemModal() {
+    $('#itemModalLabel').hide();
+}
 // **************************** Project section filter menu *****************
 
     filterSelection("all");

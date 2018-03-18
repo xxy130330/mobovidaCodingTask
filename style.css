@@ -105,6 +105,11 @@ h5.productName{
     text-decoration: underline;
 }
 
+h5.productName:hover{
+    cursor: pointer;
+    color: lightgrey;
+}
+
 .item{
     margin-top: 8%;
     margin-bottom: 8%;
@@ -290,3 +295,46 @@ h5.availability{
     width:40%;
     box-shadow: 3px 3px lightgrey;
 }
+
+
+/**********************MODAL**********************/
+/*#itemModalLabel{*/
+    /*top:50%;*/
+    /*left: 50%;*/
+    /*position: fixed;*/
+    /*border:2px solid red;*/
+    /*transform: translate(-50%, -50%);*/
+    /*!*width:50%;*!*/
+    /*!*height: 50vh;*!*/
+    /*background-color: white;*/
+/*}*/
+
+
+/*.modal {*/
+    /*display: none;*/
+    /*z-index: 1;*/
+    /*overflow: auto;*/
+    /*!*background-color: rgba(163, 15, 126, 0.66);*!*/
+/*}*/
+
+.modal-dialog {
+    top:30%;
+    /*left: 50%;*/
+    position: fixed;
+    z-index: 1;
+    /*border:2px solid red;*/
+    transform: translateY(50%);
+    /*width:50%;*/
+    /*height: 50vh;*/
+    background-color: white;
+
+    /*position: absolute;*/
+    /*background-color: rgb(255, 255, 255);*/
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
