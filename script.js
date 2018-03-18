@@ -1,39 +1,33 @@
-$(document).ready(initializeApp);
 
 var productObject = {
+    API: 'https://www.wirelessemporium.com/products.json',
     wholeList:[],
     showItems:[],
     availableList:[],
     unavailableList:[],
-    // flag: false
 };
+
+$(document).ready(initializeApp);
 
 function initializeApp() {
     handleAPI();
-    // filterSelection("all")
-    // $('.productName').click(displayItemModal);
 }
 
 function handleAPI() {
     $.ajax({
         method: 'get',
-        url: 'https://www.wirelessemporium.com/products.json',
+        url: productObject.API,
         success: function (data) {
-            productObject.productsList = data['products'];  //productList is an array
-            // productObject.title = productsList[0]['title'];
-            console.log(productObject.productsList);
+            productObject.productsList = data['products'];
             handleAllItem(productObject.productsList);
-
         },
         error: function () {
-            //error msg
+            console.log('The API address cannot be reached!');
         }
     });
 }
 
 function handleAllItem(arr) {
-    // productObject.wholeList = [];
-    // $('.listContainer').empty();
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
@@ -44,8 +38,8 @@ function handleAllItem(arr) {
     }
     $('.listContainer').append(productObject.availableList);
     $('.listContainer').append(productObject.unavailableList);
-    productObject.flag = true;
-    console.log(productObject.flag);
+    // productObject.flag = true;
+    // console.log(productObject.flag);
 }
 
 function handleItem(itemSrc) {
