@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
@@ -12,6 +13,15 @@
 
 
     <title>Title</title>
+
+    <script type="text/javascript">
+        $(function($){
+            $( '.menu-btn' ).click(function(){
+                $('.responsive-menu').toggleClass('expand')
+            })
+        })
+    </script>
+
 </head>
 <body>
     <div class="header">
@@ -29,9 +39,29 @@
                 <li>STATIONERY</li>
                 <li>OUR STORY</li>
                 <li>GIFT GUIDE</li>
-                <li id="hamburger">&#9776;</li>
             </ul>
+
+            <div class="mobile-nav">
+                <div class="menu-btn" id="menu-btn">
+                    <div></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="responsive-menu">
+                    <ul>
+                        <li>HOME</li>
+                        <li>FASHION</li>
+                        <li>TECH</li>
+                        <li>STATIONERY</li>
+                        <li>OUR STORY</li>
+                        <li>GIFT GUIDE</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+
     </div>
 
     <div class="bodyContainer">
