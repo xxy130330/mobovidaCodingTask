@@ -2,37 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="style.css">
+
+
     <title>Title</title>
+
+    <script type="text/javascript">
+
+    </script>
+
 </head>
 <body>
     <div class="header">
+        <div class="freeShippingBanner">
+            <h4>FREE SHIPPING ON ORDER $25+</h4>
+        </div>
+        <div class="logo">
+            <h5>LOGO place holder</h5>
+        </div>
+        <div class="menu" id="nav">
+            <ul class="mainMenu">
+                <li>HOME</li>
+                <li>FASHION</li>
+                <li>TECH</li>
+                <li>STATIONERY</li>
+                <li>OUR STORY</li>
+                <li>GIFT GUIDE</li>
+            </ul>
+
+            <div class="mobile-nav">
+                <div class="menu-btn" id="menu-btn">
+                    <div></div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="responsive-menu">
+                    <ul>
+                        <li>HOME</li>
+                        <li>FASHION</li>
+                        <li>TECH</li>
+                        <li>STATIONERY</li>
+                        <li>OUR STORY</li>
+                        <li>GIFT GUIDE</li>
+                    </ul>
+                </div>
+                <div style="clear: both"></div>
+
+            </div>
+        </div>
+
+
     </div>
+
     <div class="bodyContainer">
+
         <div class="filter col-md-2 col-xs-12">
-            <div id="btnContainer" class="col-md-12">
+            <div id="btnContainer">
                 <button id="total" class="filterBtn activeBtn" onclick="filterSelection('all')"> Show all</button>
-                <h5>Availability:</h5>
+                <br>
+                <h5>Availability:</h5><br>
                 <button id="available" class="filterBtn" onclick="filterSelection('available')"> Available</button>
-                <h5>Price Range:</h5>
+                <br>
+                <h5>Price Range:</h5><br>
                 <button id="under_10" class="filterBtn" onclick="filterSelection('under_10')"> Under $10</button>
                 <button id="10_to_20" class="filterBtn" onclick="filterSelection('10_to_20')"> $10 - $20</button>
                 <button id="20_to_30" class="filterBtn" onclick="filterSelection('20_to_30')"> $20 - $30</button>
                 <button id="over_30" class="filterBtn" onclick="filterSelection('over_30')"> Over $30</button>
             </div>
         </div>
-
         <div class="container col-md-10 col-xs-12">
+            <div class="sort col-md-12 col-xs-12">
+                <h5>Sort by</h5>
+                <select name="sortMenu" id="sortMenu"  onchange="sortProduct()">
+                    <option value="Default">Suggested</option>
+                    <option value="lowToHigh">Price Low To High</option>
+                    <option value="highToLow" id="highLow">Price High To Low</option>
+                </select>
+            </div>
+            <div class='listContainer col-md-12 col-xs-12'></div>
+        </div>
+        <div style="clear: both"></div>
 
-            <!--<div class="col-md-3">-->
-            <!--</div>-->
+    </div>
+
+    <div class="footer footerContainer">
+        <div class="footerMenu col-md-4 col-xs-12">
+            <ul>
+                <h5>FOOTER</h5>
+                <hr>
+                <li>Our Story</li>
+                <li>Blog</li>
+                <li>Contact Us</li>
+                <li>Shipping & Returns</li>
+                <li>Privacy Policy</li>
+            </ul>
+        </div>
+        <div class="footerMenu col-md-4 col-xs-12">
+            <ul>
+                <h5>MAIN MENU</h5>
+                <hr>
+                <li>Home</li>
+                <li>Fashion</li>
+                <li>Tech</li>
+                <li>Stationary</li>
+                <li>Our Story</li>
+                <li>Gift Guide</li>
+            </ul>
+        </div>
+        <div class="footerMenu col-md-4 col-xs-12">
+            <h5>NEWS & UPDATES</h5>
+            <hr>
+            <h5>Sign up to get the latest on sales, new releases and more ...</h5><br>
+            <input type="text" value="Your email"><br>
+            <button type="submit">SUBSCRIBE</button>
+        </div>
+        <div style="clear: both"></div>
+
+    </div>
+
+    <div class="modal" id="itemModalLabel" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="closeItemModal()">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeItemModal()">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="footer">
+
+    <div class="modal" id="errMsgModalLabel" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="closeItemModal()">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeItemModal()">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </body>
 </html>
