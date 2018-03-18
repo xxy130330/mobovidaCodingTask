@@ -32,6 +32,7 @@ function handleAPI() {
 
 function handleAllItem(arr) {
     // productObject.wholeList = [];
+    // $('.listContainer').empty();
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
@@ -162,7 +163,16 @@ function noShowItemErrMsg() {
             return;
         }
     }
-    $('.listContainer').text('Sorry, there\'s no matched item!');
+    errMsgModal();
+}
+
+function errMsgModal() {
+    console.log('modal display');
+    $('.modal-body').empty();
+    $('.modal-title').empty();
+    $('#errMsgModalLabel').show();
+    $('.modal-title').text('ERROR!!!');
+    $('.modal-body').text('Sorry, there\'s no matched item!');
 }
 
 function displayItemModal() {
@@ -191,12 +201,14 @@ function displayItemModal() {
 
 function closeItemModal() {
     $('#itemModalLabel').hide();
+    $('#errMsgModalLabel').hide();
 }
 // **************************** Project section filter menu *****************
 
     filterSelection("all");
 
     function filterSelection(c) {
+        // $('.listContainer').empty();
         var x, i;
         productObject.showItems = [];
         // x = productObject.wholeList;
