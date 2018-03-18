@@ -229,6 +229,9 @@ h5.availability{
 /*}*/
 /**********************MODAL**********************/
 
+.modal{
+    background-color: rgba(0,0,0,0.5);
+}
 
 .modal-dialog {
     top:10%;
