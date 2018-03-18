@@ -204,14 +204,13 @@ function closeItemModal() {
     $('#errMsgModalLabel').hide();
 }
 
-// function hamburgerMenu() {
-//     var menu = document.getElementById("nav");
-//     if (menu.className === "mainMenu") {
-//         menu.className += " responsive";
-//     } else {
-//         menu.className = "mainMenu";
-//     }
-// }
+// **********hamburgerMenu***********
+$(function($){
+    $( '.menu-btn' ).click(function(){
+        $('.responsive-menu').toggleClass('expand')
+    })
+});
+
 
 // **************************** Project section filter menu *****************
 
