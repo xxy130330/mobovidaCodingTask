@@ -18,10 +18,10 @@ function handleAPI() {
         method: 'get',
         url: 'https://www.wirelessemporium.com/products.json',
         success: function (data) {
-            var productsList = data['products'];  //productList is an array
+            productObject.productsList = data['products'];  //productList is an array
             // productObject.title = productsList[0]['title'];
-            console.log(productsList);
-            handleAllItem(productsList);
+            console.log(productObject.productsList);
+            handleAllItem(productObject.productsList);
 
         },
         error: function () {
@@ -157,14 +157,26 @@ function noShowItemErrMsg() {
 
 function displayItemModal() {
     console.log('modal display');
+    $('.modal-body').empty();
+    $('.modal-title').empty();
     $('#itemModalLabel').show();
     var name = $(this).text();
     console.log(name);
-    // var imgArr = this.getAttribute('images');
+    for(var imgLooking =0; imgLooking< productObject.productsList.length; imgLooking++){
+        if(productObject.productsList[imgLooking]['title'] === name){
+            var index = imgLooking;
+        }
+    }
+    var imgSrcArr = productObject.productsList[index]['images'];
+    console.log(imgSrcArr);
+
     $('.modal-title').append(name);
-    // for(var imgIndex=0; imgIndex < imgArr.length; imgIndex++) {
-    // $('.modal-body').append($(this).attr(['images'][0]['src']));
-    // }
+    for(var src=0; src<imgSrcArr.length; src++) {
+        var moreProductImg = $('<img>',{
+            src: imgSrcArr[src].src
+        });
+        $('.modal-body').append(moreProductImg);
+    }
 }
 
 function closeItemModal() {
