@@ -87,6 +87,8 @@
 
 #btnContainer{
     width:100%;
+    text-align: center;
+    background-color: wheat;
 }
 
 .bodyContainer .container{
@@ -120,8 +122,8 @@ h5.productName:hover{
 }
 
 .item{
-    margin-top: 8%;
-    margin-bottom: 8%;
+    /*margin-top: 8%;*/
+    margin-bottom: 22%;
     height:25vh;
 }
 
@@ -137,6 +139,10 @@ h5.availability{
 
 .sort{
     margin-top: 2%;
+}
+
+#sortMenu{
+    border: 1px solid black;
 }
 
 /*------------------------------
@@ -175,7 +181,7 @@ h5.availability{
 
 .filter button {
     margin: 4% 0;
-    width:90%;
+    width:85%;
 }
 
 
@@ -240,14 +246,14 @@ h5.availability{
 }
 
 .modal-dialog {
-    top:10%;
-    max-width: 60%;
-    max-height: 60vh;
-    /*left: 50%;*/
+    top:25%;
+    width: 100%;
+    max-height: 70vh;
+    /*left: 25%;*/
     position: fixed;
     z-index: 1;
     /*border:2px solid red;*/
-    transform: translateY(20%);
+    /*transform: translate(50% 25%);*/
     /*width:50%;*/
     /*height: 50vh;*/
     background-color: white;
@@ -263,19 +269,61 @@ h5.availability{
 
 /*********************MEDIA QUERIES******************/
 
-
-@media (max-width: 1068px) {
-    .mainMenu{
-        display: none;
+@media (max-width: 435px) {
+    .item{
+        margin-bottom: 22%;
+        margin-top: 0;
     }
-    /*#menu-btn{*/
-        /*float: right;*/
-        /*display: block;*/
-        /*height: 20%;*/
-    /*}*/
+
 }
 
-@media screen and (min-width: 1068px) {
+@media (max-width: 600px) {
+    .item{
+        margin-bottom: 25%;
+        margin-top: 0;
+    }
+
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+    .item{
+        margin-bottom: 20%;
+        margin-top: 0;
+    }
+
+    .sort{
+        margin-bottom: 5%;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .productImg{
+        display: block;
+    }
+
+    .productName{
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 1068px) {
+
+    .item{
+        margin-bottom: 15%;
+        margin-top: 0;
+    }
+
+    .sort{
+        margin-bottom: 3%;
+    }
+
+    .productName{
+        margin-left: 2%;
+    }
+
+/********** menu ************/
     .mobile-nav{
         display: none;
     }
@@ -285,7 +333,32 @@ h5.availability{
     /*display: none;*/
 /*}*/
 
-@media screen and (max-width: 1068px) {
+@media (min-width: 769px) and (max-width: 1068px) {
+    .item{
+        margin-bottom: 22%;
+    }
+
+    .sort{
+        margin-bottom: 3%;
+    }
+
+    .productName{
+        margin-left: 2%;
+    }
+}
+
+@media (max-width: 1068px) {
+
+
+
+
+
+
+/********** menu ************/
+    .mainMenu{
+        display: none;
+    }
+
     .mobile-nav{
         height:100%;
         width:100%;
@@ -293,7 +366,7 @@ h5.availability{
 
     .menu-btn{
         /*float: right;*/
-        margin: 4% 5% auto 95%;
+        margin: 4% 5% auto 85%;
     }
 
     .menu-btn div {
@@ -343,4 +416,6 @@ h5.availability{
     .responsive-menu ul li:hover{
         color: lightpink;
     }
+
+
 }
