@@ -32,6 +32,7 @@ function handleAPI() {
 
 function handleAllItem(arr) {
     // productObject.wholeList = [];
+    // $('.listContainer').empty();
     for(var i=0; i<arr.length; i++){
         productObject.wholeList.push(handleItem(arr[i]));
         if(handleItem(arr[i]).hasClass('available')){
@@ -101,7 +102,7 @@ function handleItem(itemSrc) {
         item.addClass('available');
         item.append(itemAvailability.text('Available'));
     }else{
-        item.append(itemAvailability.text('Unavailable').attr('style', 'color: red'));
+        item.append(itemAvailability.text('SOLD OUT!').attr('style', 'color: red'));
     }
 
     item.append(itemPrice);
@@ -131,7 +132,7 @@ function sortSuggested() {
     $('.listContainer').empty();
     $('.listContainer').append(productObject.availableList);
     $('.listContainer').append(productObject.unavailableList);
-    // noShowItemErrMsg();
+    noShowItemErrMsg();
 }
 
 function sortLowToHigh() {
@@ -139,6 +140,7 @@ function sortLowToHigh() {
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(a.getAttribute('price')) - parseFloat(b.getAttribute('price'));
     }).appendTo( wrapper );
+    noShowItemErrMsg();
 }
 
 function sortHighToLow() {
@@ -146,13 +148,31 @@ function sortHighToLow() {
     wrapper.find('.filterDiv').sort(function (a, b) {
         return parseFloat(b.getAttribute('price')) - parseFloat(a.getAttribute('price'));
     }).appendTo( wrapper );
+    noShowItemErrMsg();
 }
 
 
 function noShowItemErrMsg() {
-    if (productObject.showItems.length === 0) {
-        $('.listContainer').text('Sorry, there\'s match item!');
+    var itemDivArr = $('.filterDiv');
+    // var flag = false;
+    console.log('function');
+    for(var q=0; q<itemDivArr.length; q++){
+        console.log(itemDivArr[q]);
+        if ( $(itemDivArr[q]).hasClass('show') ) {
+            // flag = true;
+            return;
+        }
     }
+    errMsgModal();
+}
+
+function errMsgModal() {
+    console.log('modal display');
+    $('.modal-body').empty();
+    $('.modal-title').empty();
+    $('#errMsgModalLabel').show();
+    $('.modal-title').text('ERROR!!!');
+    $('.modal-body').text('Sorry, there\'s no matched item!');
 }
 
 function displayItemModal() {
@@ -181,12 +201,23 @@ function displayItemModal() {
 
 function closeItemModal() {
     $('#itemModalLabel').hide();
+    $('#errMsgModalLabel').hide();
 }
+
+// **********hamburgerMenu***********
+$(function($){
+    $( '.menu-btn' ).click(function(){
+        $('.responsive-menu').toggleClass('expand')
+    })
+});
+
+
 // **************************** Project section filter menu *****************
 
     filterSelection("all");
 
     function filterSelection(c) {
+        // $('.listContainer').empty();
         var x, i;
         productObject.showItems = [];
         // x = productObject.wholeList;
@@ -213,6 +244,7 @@ function closeItemModal() {
 
             }
         }
+        noShowItemErrMsg();
     }
 
 // Show filtered elements
