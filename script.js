@@ -163,6 +163,9 @@ function noShowItemErrMsg() {
             return;
         }
     }
+    // setTimeout(function(){ errMsgModal(); }, 3000);
+
+    // setInterval(, 5000);
     errMsgModal();
 }
 
@@ -244,7 +247,9 @@ $(function($){
 
             }
         }
-        noShowItemErrMsg();
+        setTimeout(function(){ noShowItemErrMsg(); }, 3000);
+
+        // noShowItemErrMsg();
     }
 
 // Show filtered elements
