@@ -203,6 +203,16 @@ function closeItemModal() {
     $('#itemModalLabel').hide();
     $('#errMsgModalLabel').hide();
 }
+
+// function hamburgerMenu() {
+//     var menu = document.getElementById("nav");
+//     if (menu.className === "mainMenu") {
+//         menu.className += " responsive";
+//     } else {
+//         menu.className = "mainMenu";
+//     }
+// }
+
 // **************************** Project section filter menu *****************
 
     filterSelection("all");
