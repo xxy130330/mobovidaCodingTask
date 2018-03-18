@@ -87,6 +87,8 @@
 
 #btnContainer{
     width:100%;
+    text-align: center;
+    background-color: wheat;
 }
 
 .bodyContainer .container{
@@ -175,7 +177,7 @@ h5.availability{
 
 .filter button {
     margin: 4% 0;
-    width:90%;
+    width:85%;
 }
 
 
@@ -275,7 +277,16 @@ h5.availability{
     /*}*/
 }
 
+
+
 @media screen and (min-width: 1068px) {
+
+    .item{
+        margin-bottom: 15%;
+        margin-top: 0;
+    }
+
+/********** menu ************/
     .mobile-nav{
         display: none;
     }
@@ -286,6 +297,13 @@ h5.availability{
 /*}*/
 
 @media screen and (max-width: 1068px) {
+    .item{
+        margin-bottom: 20%;
+    }
+
+
+
+/********** menu ************/
     .mobile-nav{
         height:100%;
         width:100%;
@@ -293,7 +311,7 @@ h5.availability{
 
     .menu-btn{
         /*float: right;*/
-        margin: 4% 5% auto 95%;
+        margin: 4% 5% auto 85%;
     }
 
     .menu-btn div {
@@ -343,4 +361,6 @@ h5.availability{
     .responsive-menu ul li:hover{
         color: lightpink;
     }
+
+
 }
