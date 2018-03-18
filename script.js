@@ -65,7 +65,7 @@ function handleItem(itemSrc) {
         text: itemSrc.title,
         class: 'productName',
         'data-toggle': "modal",
-        'href': '#itemModalLabel'
+        'data-target': '#itemModalLabel'
     });
     var itemPrice = $('<h4>',{
         text: `$${itemSrc['variants'][0]['price']}`,
@@ -165,6 +165,10 @@ function displayItemModal() {
     // for(var imgIndex=0; imgIndex < imgArr.length; imgIndex++) {
     // $('.modal-body').append($(this).attr(['images'][0]['src']));
     // }
+}
+
+function closeItemModal() {
+    $('#itemModalLabel').hide();
 }
 // **************************** Project section filter menu *****************
 
