@@ -1,7 +1,11 @@
-1. Read the API and present the products in an organized way, such as you might see on any other e-commerce site.
-2. Include at least one filter UI component that will allow the user to restrict the displayed product set by either price, color or some other attribute you would find useful.
-3. Add a functional sorting element that will re-order the products on the page by Price High-Low and Price Low-High.
+Mobovida Coding Task
 
-Feel free to use any frameworks you would like to achieve the task and be sure that your page is presented cleanly across all possible screen widths.
+API url: https://www.wirelessemporium.com/products.json
 
-Here is the link you can use to grab the product data in JSON format: https://www.wirelessemporium.com/products.json
+1. Utilized API url above to grab products data.
+2. Filter UI component included which allows user to restrict the displayed products set by availability and price range.
+3. A functional sorting element to re-order the products by price low to high and price high to low.
+4. Error massage modal pop out when there is no matched product available.
+5. More images available by modal popping out when product's name is clicked.
+6. Available products always show first by default .
+7. Mobile responsive.
