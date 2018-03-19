@@ -162,7 +162,7 @@ function errMsgModal() {
     $('.modal-body').empty();
     $('.modal-title').empty();
     $('#errMsgModalLabel').show();
-    $('.errModal-title').text('ERROR!!!');
+    $('.errModal-title').text('Oops!!!');
     $('.errModal-body').text('Sorry, there\'s no matched item!');
 }
 
