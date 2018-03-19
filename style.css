@@ -6,6 +6,7 @@
 /*------------------------------
 	        header
 ------------------------------*/
+
 .header{
     height: 15vh;
     width: 100%;
@@ -145,22 +146,19 @@ h5.availability{
     color: #2F4254;
 }
 
-/* Add a light grey background on mouse-over */
 .filterBtn:hover {
     border-bottom: 3px solid lightpink;
 }
 
-/* Add a dark background to the active button */
 .filterBtn.activeBtn {
     border-bottom: 3px solid lightpink;
 }
 
 
 .filterDiv {
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* The "show" class is added to the filtered elements */
 .show {
     display: inline-block;
 }
@@ -169,8 +167,6 @@ h5.availability{
     margin: 4% 0;
     width:85%;
 }
-
-
 
 /*------------------------------
 	         footer
@@ -274,25 +270,6 @@ h5.availability{
     }
 }
 
-@media (min-width: 1068px) {
-    .item{
-        margin-bottom: 15%;
-        margin-top: 0;
-    }
-
-    .sort{
-        margin-bottom: 3%;
-    }
-
-    .productName{
-        margin-left: 2%;
-    }
-
-    .mobile-nav{
-        display: none;
-    }
-}
-
 @media (min-width: 769px) and (max-width: 1068px) {
     .item{
         margin-bottom: 22%;
@@ -308,16 +285,16 @@ h5.availability{
 }
 
 @media (max-width: 1068px) {
-    .mainMenu{
+    .mainMenu {
         display: none;
     }
 
-    .mobile-nav{
-        height:100%;
-        width:100%;
+    .mobile-nav {
+        height: 100%;
+        width: 100%;
     }
 
-    .menu-btn{
+    .menu-btn {
         margin: 4% 5% auto 85%;
     }
 
@@ -339,11 +316,11 @@ h5.availability{
         width: 19px;
         height: 3px;
         margin: 4px 0;
-        background: rgb(0,0,0);
+        background: rgb(0, 0, 0);
         z-index: 99;
     }
 
-    .responsive-menu{
+    .responsive-menu {
         display: none;
     }
 
@@ -354,18 +331,37 @@ h5.availability{
         width: 100%;
     }
 
-    .responsive-menu ul{
-        background-color: rgba(0,0,0,0.8);
+    .responsive-menu ul {
+        background-color: rgba(0, 0, 0, 0.8);
         color: white;
         list-style: none;
         font-size: 2.5vh;
     }
 
-    .responsive-menu ul li{
+    .responsive-menu ul li {
         margin-bottom: 2%;
     }
 
-    .responsive-menu ul li:hover{
+    .responsive-menu ul li:hover {
         color: lightpink;
+    }
+}
+
+@media (min-width: 1068px) {
+    .item{
+        margin-bottom: 15%;
+        margin-top: 0;
+    }
+
+    .sort{
+        margin-bottom: 3%;
+    }
+
+    .productName{
+        margin-left: 2%;
+    }
+
+    .mobile-nav{
+        display: none;
     }
 }
