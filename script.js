@@ -24,7 +24,7 @@ function handleAPI() {
             handleAllItem(productObject.productsList);
         },
         error: function () {
-            console.log('The API address cannot be reached!');
+            console.log('The API address cannot be reached!');  //Error msg for dev purpose only.
         }
     });
 }
@@ -113,7 +113,6 @@ function handleItem(itemSrc) {
 
 function sortProduct() {
     var selectValue = $('#sortMenu').val();
-    console.log('clicked' + selectValue);
     switch (selectValue){
         case ('Default'):
             sortSuggested();
@@ -163,7 +162,7 @@ function errMsgModal() {
     $('.modal-body').empty();
     $('.modal-title').empty();
     $('#errMsgModalLabel').show();
-    $('.errModal-title').text('ERROR!!!');
+    $('.errModal-title').text('Oops!!!');
     $('.errModal-body').text('Sorry, there\'s no matched item!');
 }
 
