@@ -92,7 +92,7 @@ function handleItem(itemSrc) {
 
     itemName.click(displayItemModal);
 
-    item.append(itemImg, itemName, $('<br>'));
+    item.append(itemImg, $('<br>'), itemName, $('<br>'));
 
     if(itemSrc['variants'][0]['available'] === true){
         item.addClass('available');

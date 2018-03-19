@@ -265,9 +265,9 @@ h5.availability{
         display: block;
     }
 
-    .productName{
-        margin-left: 0;
-    }
+    /*.productName{*/
+        /*margin-left: 0;*/
+    /*}*/
 }
 
 @media (min-width: 769px) and (max-width: 1068px) {
@@ -280,7 +280,7 @@ h5.availability{
     }
 
     .productName{
-        margin-left: 2%;
+        margin-left: 0;
     }
 }
 
