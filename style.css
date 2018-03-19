@@ -3,12 +3,12 @@
 }
 
 
-/******************HEADER*************/
-
+/*------------------------------
+	        header
+------------------------------*/
 .header{
     height: 15vh;
     width: 100%;
-    /*border:1px dashed blue;*/
 }
 
 .freeShippingBanner{
@@ -16,7 +16,6 @@
     width: 100%;
     background-color: pink;
     text-align: center;
-    /*vertical-align: middle;*/
 }
 
 .freeShippingBanner h4{
@@ -68,18 +67,16 @@
 }
 
 
-/********************BODY*******************/
-
+/*------------------------------
+	         body
+------------------------------*/
 
 .bodyContainer{
     width:100%;
     background-color: lightgoldenrodyellow;
-    /*border:1px solid greenyellow;*/
  }
 
 .bodyContainer .filter{
-    /*width:20%;*/
-    /*border:1px solid red;*/
     display: inline-block;
     float: left;
     margin-top: 5%;
@@ -92,24 +89,17 @@
 }
 
 .bodyContainer .container{
-    /*border:2px solid black;*/
-    /*width:80%;*/
     display: block;
-    /*float: left;*/
     margin-bottom: 5%;
     padding: 0;
-    /*min-height: 85vh;*/
 }
 
 img{
-    /*width: 20vmin;*/
     height:20vmin;
-    /*margin: 2%;*/
 }
 
 h5{
     display: inline-block;
-    /*margin-top: 0;*/
 }
 
 h5.productName{
@@ -122,7 +112,6 @@ h5.productName:hover{
 }
 
 .item{
-    /*margin-top: 8%;*/
     margin-bottom: 22%;
     height:25vh;
 }
@@ -134,7 +123,6 @@ h5.availability{
 
 .listContainer{
     width: 100%;
-    /*border:1px solid purple;*/
 }
 
 .sort{
@@ -148,11 +136,11 @@ h5.availability{
 /*------------------------------
 	filter button
 ------------------------------*/
+
 .filterBtn {
     border: none;
     outline: none;
     padding: 12px 16px;
-    /*background-color: #ddd;*/
     cursor: pointer;
     color: #2F4254;
 }
@@ -160,13 +148,11 @@ h5.availability{
 /* Add a light grey background on mouse-over */
 .filterBtn:hover {
     border-bottom: 3px solid lightpink;
-    /*color: white;*/
 }
 
 /* Add a dark background to the active button */
 .filterBtn.activeBtn {
     border-bottom: 3px solid lightpink;
-    /*color: white;*/
 }
 
 
@@ -186,23 +172,12 @@ h5.availability{
 
 
 
-/*******************FOOTER*******************/
-/*.footer{*/
-    /*background-color: rgb(246,244,244);*/
-    /*min-height: 20vh;*/
-    /*position: relative;*/
-    /*bottom: 0;*/
-/*}*/
+/*------------------------------
+	         footer
+------------------------------*/
 
 .footer {
-    /*position: relative;*/
-    /*right: 0;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*padding: 1rem;*/
-    /*height: 20vh;*/
     background-color: #efefef;
-    /*text-align: center;*/
 }
 
 .footerMenu{
@@ -233,13 +208,14 @@ h5.availability{
     box-shadow: 3px 3px lightgrey;
 }
 
-
 .footerMenu ul h5,
 .footerMenu h5{
     font-weight: bold;
 }
 
-/**********************MODAL**********************/
+/*------------------------------
+	         modal
+------------------------------*/
 
 .modal{
     background-color: rgba(0,0,0,0.5);
@@ -249,17 +225,9 @@ h5.availability{
     top:25%;
     width: 100%;
     max-height: 70vh;
-    /*left: 25%;*/
     position: fixed;
     z-index: 1;
-    /*border:2px solid red;*/
-    /*transform: translate(50% 25%);*/
-    /*width:50%;*/
-    /*height: 50vh;*/
     background-color: white;
-
-    /*position: absolute;*/
-    /*background-color: rgb(255, 255, 255);*/
     margin: auto;
     border: 1px solid black;
     border-radius: 10px;
@@ -267,14 +235,15 @@ h5.availability{
     overflow: auto;
 }
 
-/*********************MEDIA QUERIES******************/
+/*------------------------------
+	   media queries
+------------------------------*/
 
 @media (max-width: 435px) {
     .item{
         margin-bottom: 22%;
         margin-top: 0;
     }
-
 }
 
 @media (max-width: 600px) {
@@ -282,7 +251,6 @@ h5.availability{
         margin-bottom: 25%;
         margin-top: 0;
     }
-
 }
 
 @media (min-width: 600px) and (max-width: 768px) {
@@ -294,8 +262,6 @@ h5.availability{
     .sort{
         margin-bottom: 5%;
     }
-
-
 }
 
 @media (max-width: 768px) {
@@ -309,7 +275,6 @@ h5.availability{
 }
 
 @media (min-width: 1068px) {
-
     .item{
         margin-bottom: 15%;
         margin-top: 0;
@@ -323,15 +288,10 @@ h5.availability{
         margin-left: 2%;
     }
 
-/********** menu ************/
     .mobile-nav{
         display: none;
     }
 }
-
-/*#menu-btn{*/
-    /*display: none;*/
-/*}*/
 
 @media (min-width: 769px) and (max-width: 1068px) {
     .item{
@@ -348,13 +308,6 @@ h5.availability{
 }
 
 @media (max-width: 1068px) {
-
-
-
-
-
-
-/********** menu ************/
     .mainMenu{
         display: none;
     }
@@ -365,7 +318,6 @@ h5.availability{
     }
 
     .menu-btn{
-        /*float: right;*/
         margin: 4% 5% auto 85%;
     }
 
@@ -416,6 +368,4 @@ h5.availability{
     .responsive-menu ul li:hover{
         color: lightpink;
     }
-
-
 }
